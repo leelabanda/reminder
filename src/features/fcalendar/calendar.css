@@ -1,12 +1,5 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Container */
-.container {
+.containerf {
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
@@ -14,7 +7,7 @@
 }
 
 /* Header */
-.header {
+.headerf {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,11 +15,11 @@
     margin-bottom: 20px;
 }
 
-.header h2 {
+.headerf h2 {
     font-size: 24px;
 }
 
-.header button {
+.headerf button {
     padding: 10px 16px;
     border: none;
     border-radius: 6px;
@@ -35,138 +28,134 @@
     cursor: pointer;
 }
 
+/* Scroll Wrapper with enforced horizontal scroll context */
+.calendar-wrapperf {
+    width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+
 /* Weekdays */
-.weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.weekdaysf {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
     text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
+    min-width: 840px;
 }
 
 /* Calendar */
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.calendarf {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
     gap: 10px;
+    min-width: 840px;
 }
 
 /* Day */
-.day {
+.dayf {
     min-height: 120px;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background: white;
+    white-space: normal; /* Restores text wrapping inside grid cells */
 }
 
-.empty {
+.emptyf {
     background: #f5f5f5;
     border: none;
 }
 
-.date {
+.datef {
     font-size: 18px;
     font-weight: bold;
 }
 
-.today {
+.todayf {
     border: 3px solid #16a34a;
 }
 
-.birthday {
+.birthdayf {
     background: #dbeafe;
 }
 
-.anniversary {
+.anniversaryf {
     background: #ffe4ec;
 }
 
-.both {
+.bothf {
     background: #e9d5ff;
 }
 
-.birthday-text,
-.anniversary-text {
+.birthday-textf,
+.anniversary-textf {
     font-size: 12px;
     margin-top: 5px;
 }
-
 /* Tablet */
 @media (max-width: 768px) {
-
-    .container {
+    .containerf {
         padding: 15px;
     }
 
-    .header {
+    .headerf {
         flex-direction: column;
         gap: 10px;
         align-items: stretch;
     }
 
-    .header h2 {
+    .headerf h2 {
         text-align: center;
         font-size: 20px;
     }
 
-    .header button {
+    .headerf button {
         width: 100%;
     }
 
-    .day {
+    .dayf {
         min-height: 100px;
     }
 
-    .date {
+    .datef {
         font-size: 16px;
     }
 
-    .birthday-text,
-    .anniversary-text {
+    .birthday-textf,
+    .anniversary-textf {
         font-size: 11px;
     }
 }
 
 /* Small Phones */
-@media screen and (max-width:480px) {
-
-    .container {
+@media screen and (max-width: 480px) {
+    .containerf {
         padding: 10px;
     }
 
-    .calendar {
-        grid-template-columns: 1fr;
-    }
-
-    .day {
+    .dayf {
         min-height: 100px;
     }
 
-    .header h2 {
+    .headerf h2 {
         font-size: 18px;
     }
 
-    .header button {
+    .headerf button {
         font-size: 14px;
         padding: 10px;
     }
 
-    .date {
+    .datef {
         font-size: 16px;
     }
 
-    .birthday-text,
-    .anniversary-text {
+    .birthday-textf,
+    .anniversary-textf {
         font-size: 11px;
     }
-}
-.calendar-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.weekdays,
-.calendar {
-    min-width: 840px; /* 7 columns × 120px */
 }

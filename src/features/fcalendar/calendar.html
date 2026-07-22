@@ -1,6 +1,6 @@
-<div class="container">
+<div class="containerf">
 
-  <div class="header">
+  <div class="headerf">
     <button (click)="previousMonth()">◀</button>
 
     <h2>{{ monthName }} {{ currentYear }}</h2>
@@ -8,17 +8,17 @@
     <button (click)="nextMonth()">▶</button>
   </div>
 
-  <div class="calendar-wrapper">
+  <div class="calendar-wrapperf">
 
-    <div class="weekdays">
+    <div class="weekdaysf">
       <div *ngFor="let day of weekDays">
         {{ day }}
       </div>
     </div>
 
-    <div class="calendar">
+    <div class="calendarf">
       <div
-        class="day"
+        class="dayf"
         *ngFor="let cell of calendarDays"
         [class.empty]="!cell.isCurrentMonth"
         [class.today]="isToday(cell.day)"
@@ -29,16 +29,16 @@
 
         <ng-container *ngIf="cell.isCurrentMonth">
 
-          <span class="date">{{ cell.day }}</span>
+          <span class="datef">{{ cell.day }}</span>
 
           <div
-            class="birthday-text"
+            class="birthday-textf"
             *ngFor="let person of getBirthdays(cell.day)">
             🎂 {{ person.Name }}
           </div>
 
           <div
-            class="anniversary-text"
+            class="anniversary-textf"
             *ngFor="let person of getAnniversaries(cell.day)">
             💍 {{ person.Name }}
           </div>
