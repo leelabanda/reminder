@@ -72,27 +72,3 @@
         font-size: 16px;
     }
 }
-
-/* ==========================
-   Small Mobile
-========================== */
-@media (max-width: 480px) {
-
-    .status-grid {
-        padding: 12px;
-        box-sizing: border-box;
-    }
-
-    .card {
-        padding: 16px;
-        box-sizing: border-box;
-    }
-
-    .card h1 {
-        font-size: 28px;
-    }
-
-    .card h3 {
-        font-size: 15px;
-    }
-}
