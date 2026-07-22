@@ -24,6 +24,7 @@
 
 .date {
     min-width: 70px;
+    text-align: center;
     font-weight: bold;
     color: #1976d2;
 }
@@ -38,8 +39,11 @@ h2 {
     margin-bottom: 15px;
 }
 
-hr {
-    margin: 20px 0;
+.no-event {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px 0;
 }
 
 /* Tablet & Mobile */
@@ -47,8 +51,9 @@ hr {
 
     .event-card {
         max-width: 100%;
-        margin: 15px;
+        margin: 15px auto;
         padding: 15px;
+        border-radius: 10px;
     }
 
     .event-item {
@@ -59,6 +64,7 @@ hr {
 
     .date {
         min-width: auto;
+        text-align: left;
         font-size: 15px;
     }
 
@@ -69,13 +75,16 @@ hr {
     h2 {
         font-size: 22px;
     }
+
+    .no-event {
+        font-size: 15px;
+    }
 }
 
 /* Small Phones */
 @media screen and (max-width: 480px) {
 
     .event-card {
-        margin: 10px;
         padding: 12px;
     }
 
