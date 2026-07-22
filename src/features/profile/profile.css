@@ -12,11 +12,12 @@
 .profile-card {
     width: 100%;
     max-width: 350px;
-    background: white;
+    background: #fff;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,.2);
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* Profile Image */
@@ -31,31 +32,16 @@
     margin: 15px 0;
 }
 
-/* ==========================
-   Mobile View
-========================== */
-@media (max-width: 768px) {
+/* Tablet */
+@media screen and (max-width: 768px) {
 
     .profile-container {
-        width: 100%;
-        min-height: 100vh;
-        margin: 0 auto; /* Ensures precise centering with no side offset */
-        padding: 20px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        box-sizing: border-box;
-        overflow-x: hidden;
+        padding: 15px;
     }
 
     .profile-card {
-        width: 100%;
         max-width: 100%;
-        margin: 0 auto; /* Protects card positioning */
         padding: 25px;
-        border-radius: 0;
-        box-shadow: none;
-        box-sizing: border-box;
     }
 
     .profile-image {
@@ -67,19 +53,16 @@
     }
 }
 
-/* ==========================
-   Small Mobile
-========================== */
-@media (max-width: 400px) {
+/* Small Phones */
+@media screen and (max-width: 480px) {
 
     .profile-container {
-        padding: 15px;
-        box-sizing: border-box;
+        padding: 10px;
     }
 
     .profile-card {
         padding: 20px;
-        box-sizing: border-box;
+        border-radius: 10px;
     }
 
     .profile-image {

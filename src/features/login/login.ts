@@ -18,7 +18,7 @@ export class Login {
 
   login() {
 
-    if (this.username === 'surekha' && this.password === '123#') {
+    if (this.username === 'Surekha' && this.password === '123#') {
 
       localStorage.setItem('loggedIn', 'true');
        localStorage.setItem('username', this.username);
@@ -26,7 +26,7 @@ export class Login {
 
       this.router.navigate(['/mother/events']);
 
-    }else if(this.username === 'rajendra' && this.password === '123#') {
+    }else if(this.username === 'Rajendra' && this.password === '123#') {
  localStorage.setItem('username', this.username);
 
       localStorage.setItem('loggedIn', 'true');

@@ -51,7 +51,7 @@ searchUser() {
   const text = this.searchText.toLowerCase().trim();
 
   this.motherPeople = this.people.filter(person =>
-    (person.Relation === 'Relation' || person.Relation === 'M-Friend') &&
+    (person.Relation === 'Relation' || person.Relation === 'F-Friend') &&
     person.Name.toLowerCase().includes(text)
   );
 }

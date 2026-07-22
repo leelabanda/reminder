@@ -5,6 +5,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
 /* Full Screen Background */
 .login-container {
     width: 100%;
@@ -13,29 +20,25 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-
     background: linear-gradient(135deg, #1976d2, #64b5f6);
 }
 
-/* Transparent Glass Card */
+/* Login Card */
 .login-card {
     width: 100%;
     max-width: 420px;
     padding: 40px;
-
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255,255,255,.3);
     border-radius: 16px;
-
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,.2);
 }
 
 .login-card h1 {
     text-align: center;
-    color: #fff;
+    color: white;
     margin-bottom: 10px;
 }
 
@@ -45,7 +48,6 @@
     margin-bottom: 30px;
 }
 
-/* Form */
 .form-group {
     margin-bottom: 20px;
 }
@@ -53,7 +55,7 @@
 label {
     display: block;
     margin-bottom: 8px;
-    color: #fff;
+    color: white;
     font-weight: bold;
 }
 
@@ -76,52 +78,76 @@ input:focus {
     border-color: white;
 }
 
-/* Button */
 button {
     width: 100%;
     padding: 13px;
     border: none;
     border-radius: 8px;
-
     background: white;
     color: #1976d2;
-
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 button:hover {
     background: #f2f2f2;
-    transform: translateY(-2px);
-}
-/* Add this globally to prevent root-level overflow */
-body {
-    overflow-x: hidden;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* Tablet & Mobile */
+@media screen and (max-width: 768px) {
+
     .login-container {
-        width: 100%;
-        padding: 10px; /* Reduces outer padding slightly on smaller screens */
+        padding: 15px;
     }
 
     .login-card {
-        width: 100%;
         max-width: 100%;
-        padding: 25px 15px; /* Adjusts internal card padding */
+        padding: 25px 20px;
         border-radius: 12px;
-        box-sizing: border-box; /* Ensures padding stays contained */
     }
 
     .login-card h1 {
         font-size: 28px;
     }
 
+    .login-card p {
+        font-size: 15px;
+    }
+
     input,
     button {
         font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* Small Phones */
+@media screen and (max-width: 480px) {
+
+    .login-container {
+        padding: 10px;
+    }
+
+    .login-card {
+        padding: 20px 15px;
+    }
+
+    .login-card h1 {
+        font-size: 24px;
+    }
+
+    .login-card p {
+        font-size: 14px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+        padding: 10px;
     }
 }

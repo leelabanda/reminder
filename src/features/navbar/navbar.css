@@ -220,32 +220,9 @@ body{
     display: none;
 }
 /* Mobile Adjustments */
-@media screen and (max-width: 400px) {
+/* Tablet & Mobile */
+@media screen and (max-width: 768px) {
 
-    /* Collapse or shift sidebar out of the way initially on mobile */
-    .sidebar {
-        width: 0;
-        overflow: hidden;
-    }
-
-    .sidebar.open {
-        width: 250px; /* Opens fully when toggled on mobile */
-    }
-
-    /* Content expands to fill 100% width when sidebar is hidden */
-    .content {
-        left: 0;
-        width: 100%;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-
-    .content.full {
-        left: 0;
-        width: 100%;
-    }
-
-    /* Adjust header elements for smaller screens */
     .header {
         padding: 0 15px;
     }
@@ -257,5 +234,58 @@ body{
     .logout-btn {
         padding: 6px 12px;
         font-size: 14px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        left: -250px;
+        z-index: 1100;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Content */
+    .content {
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .content.full {
+        left: 0;
+        width: 100%;
+    }
+}
+
+/* Small Phones */
+@media screen and (max-width: 480px) {
+
+    .header {
+        height: 55px;
+        padding: 0 10px;
+    }
+
+    .menu-btn {
+        font-size: 22px;
+    }
+
+    .logout-btn {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .sidebar {
+        top: 55px;
+        height: calc(100vh - 55px);
+    }
+
+    .content {
+        top: 55px;
+        height: calc(100vh - 55px);
+        padding: 10px;
     }
 }

@@ -8,42 +8,46 @@
     <button (click)="nextMonth()">▶</button>
   </div>
 
-  <div class="weekdays">
-    <div *ngFor="let day of weekDays">
-      {{ day }}
+  <div class="calendar-wrapper">
+
+    <div class="weekdays">
+      <div *ngFor="let day of weekDays">
+        {{ day }}
+      </div>
     </div>
-  </div>
 
-  <div class="calendar">
-    <div
-      class="day"
-      *ngFor="let cell of calendarDays"
-      [class.empty]="!cell.isCurrentMonth"
-      [class.today]="isToday(cell.day)"
-      [class.birthday]="hasBirthday(cell.day)"
-      [class.anniversary]="hasAnniversary(cell.day)"
-      [class.both]="hasBirthday(cell.day) && hasAnniversary(cell.day)"
-    >
+    <div class="calendar">
+      <div
+        class="day"
+        *ngFor="let cell of calendarDays"
+        [class.empty]="!cell.isCurrentMonth"
+        [class.today]="isToday(cell.day)"
+        [class.birthday]="hasBirthday(cell.day)"
+        [class.anniversary]="hasAnniversary(cell.day)"
+        [class.both]="hasBirthday(cell.day) && hasAnniversary(cell.day)"
+      >
 
-      <ng-container *ngIf="cell.isCurrentMonth">
+        <ng-container *ngIf="cell.isCurrentMonth">
 
-        <span class="date">{{ cell.day }}</span>
+          <span class="date">{{ cell.day }}</span>
 
-        <div
-          class="birthday-text"
-          *ngFor="let person of getBirthdays(cell.day)">
-          🎂 {{ person.Name }}
-        </div>
+          <div
+            class="birthday-text"
+            *ngFor="let person of getBirthdays(cell.day)">
+            🎂 {{ person.Name }}
+          </div>
 
-        <div
-          class="anniversary-text"
-          *ngFor="let person of getAnniversaries(cell.day)">
-          💍 {{ person.Name }}
-        </div>
+          <div
+            class="anniversary-text"
+            *ngFor="let person of getAnniversaries(cell.day)">
+            💍 {{ person.Name }}
+          </div>
 
-      </ng-container>
+        </ng-container>
 
+      </div>
     </div>
+
   </div>
 
 </div>

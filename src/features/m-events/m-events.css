@@ -1,7 +1,9 @@
 .container {
+    width: 100%;
     max-width: 1100px;
     margin: 30px auto;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .today-date {
@@ -15,24 +17,24 @@ h2 {
     color: #333;
 }
 
+/* Cards */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
 }
 
 .card {
-    width: 260px;
-    background: white;
+    background: #fff;
     border-radius: 15px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,.15);
-    transition: 0.3s;
+    transition: transform .3s;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 }
 
 .birthday-card {
@@ -67,20 +69,15 @@ h2 {
     border-radius: 10px;
 }
 
-/* Mobile View */
-@media (max-width: 560px) {
+/* Tablet */
+@media screen and (max-width: 768px) {
 
     .container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto; /* Ensures proper centering with zero side offset */
         padding: 15px;
-        box-sizing: border-box;
     }
 
     .today-date {
-        font-size: 18px;
-        margin-bottom: 20px;
+        font-size: 20px;
     }
 
     h2 {
@@ -89,42 +86,31 @@ h2 {
     }
 
     .card-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%; /* Ensures flex parent fills container cleanly */
+        grid-template-columns: 1fr;
     }
 
     .card {
-        width: 100%; /* Forces cards to expand fully inside the stack */
-        box-sizing: border-box;
+        padding: 18px;
     }
 
     .icon {
-        font-size: 38px;
+        font-size: 40px;
     }
 
     .card h3 {
         font-size: 18px;
     }
-
-    .card p {
-        font-size: 14px;
-    }
-
-    .empty-message {
-        font-size: 14px;
-    }
 }
-/* Small Mobile */
-@media (max-width: 480px) {
+
+/* Small Phones */
+@media screen and (max-width: 480px) {
 
     .container {
-        padding: 12px;
+        padding: 10px;
     }
 
     .today-date {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     h2 {
@@ -133,6 +119,7 @@ h2 {
 
     .card {
         padding: 15px;
+        border-radius: 10px;
     }
 
     .icon {
@@ -144,6 +131,6 @@ h2 {
     }
 
     .card p {
-        font-size: 13px;
+        font-size: 14px;
     }
 }

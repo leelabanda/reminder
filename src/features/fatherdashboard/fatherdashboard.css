@@ -1,97 +1,91 @@
+/* Event Card */
 .event-card {
     width: 100%;
     max-width: 500px;
     margin: 20px auto;
-    background: #fff;
     padding: 20px;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
     box-sizing: border-box;
 }
 
+/* Event Item */
 .event-item {
     display: flex;
     align-items: center;
+    gap: 12px;
     padding: 12px;
     margin: 10px 0;
-    border-left: 4px solid #4CAF50;
     background: #f8f8f8;
+    border-left: 4px solid #4CAF50;
     border-radius: 8px;
 }
 
 .date {
-    width: 70px;
+    min-width: 70px;
+    text-align: center;
     font-weight: bold;
     color: #1976d2;
-    text-align: center;
 }
 
 .details {
     flex: 1;
-    padding-left: 12px;
 }
 
 h2 {
+    text-align: center;
     color: #444;
     margin-bottom: 15px;
-}
-
-hr {
-    margin: 20px 0;
 }
 
 .no-event {
     text-align: center;
     color: #777;
-    font-size: 16px;
     font-style: italic;
     padding: 20px 0;
 }
 
-/* Mobile View */
-/* Mobile View */
-@media (max-width: 768px) {
+/* Tablet & Mobile */
+@media screen and (max-width: 768px) {
+
     .event-card {
-        width: 100%;
-        max-width: 100%; /* Prevents restriction constraints */
-        margin: 15px 0;  /* Removes auto margins that cause uneven gaps */
+        max-width: 100%;
+        margin: 15px auto;
         padding: 15px;
-        box-sizing: border-box;
+        border-radius: 10px;
     }
 
     .event-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
-        padding: 12px;
     }
 
     .date {
-        width: auto;
-        font-size: 15px;
+        min-width: auto;
         text-align: left;
+        font-size: 15px;
     }
 
     .details {
-        padding-left: 0;
         width: 100%;
     }
 
     h2 {
-        font-size: 20px;
-        text-align: center;
+        font-size: 22px;
     }
 
     .no-event {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
-/* Small Mobile */
-@media (max-width: 480px) {
+/* Small Phones */
+@media screen and (max-width: 480px) {
+
     .event-card {
         padding: 12px;
-        border-radius: 8px;
     }
 
     .event-item {
@@ -107,6 +101,6 @@ hr {
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 }

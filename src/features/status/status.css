@@ -1,32 +1,31 @@
-/* Page */
+/* Status Grid */
 .status-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
     padding: 20px;
-    background: #f4f7fb;
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
+    background: #f4f7fb;
     box-sizing: border-box;
 }
 
 /* Card */
 .card {
     background: #fff;
+    border-left: 6px solid #1976d2;
     border-radius: 15px;
     padding: 25px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: 0.3s;
-    border-left: 6px solid #1976d2;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    transition: .3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 18px rgba(0,0,0,.15);
 }
 
-/* Card Title */
 .card h3 {
     margin: 0;
     font-size: 18px;
@@ -34,41 +33,49 @@
     font-weight: 600;
 }
 
-/* Card Value */
 .card h1 {
     margin-top: 15px;
     font-size: 38px;
     color: #1976d2;
-    font-weight: bold;
 }
 
-/* ==========================
-   Mobile View
-========================== */
-@media (max-width: 400px) {
+/* Tablet */
+@media screen and (max-width: 768px) {
 
     .status-grid {
-        width: 100%;
-        min-height: 100vh;
-        margin: 0 auto; /* Ensures precise centering with no side offset */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
         padding: 15px;
-        grid-template-columns: 1fr;
-        box-sizing: border-box;
-        overflow-x: hidden;
     }
 
     .card {
-        width: 100%;
         padding: 20px;
-        border-radius: 10px;
-        box-sizing: border-box;
     }
 
     .card h1 {
         font-size: 32px;
     }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+
+    .status-grid {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .card {
+        padding: 18px;
+        border-radius: 10px;
+    }
 
     .card h3 {
         font-size: 16px;
+    }
+
+    .card h1 {
+        font-size: 28px;
     }
 }
