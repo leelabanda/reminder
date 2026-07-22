@@ -174,9 +174,9 @@ body{
 
 .content.full{
 
-    left:70px;
+    left:0px;
 
-    width:calc(100% - 70px);
+    width:100%;
 }
 .sidebar {
     position: fixed;
@@ -220,7 +220,7 @@ body{
     display: none;
 }
 /* Mobile Adjustments */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
 
     /* Collapse or shift sidebar out of the way initially on mobile */
     .sidebar {

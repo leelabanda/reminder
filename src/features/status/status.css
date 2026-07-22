@@ -45,7 +45,7 @@
 /* ==========================
    Mobile View
 ========================== */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
 
     .status-grid {
         width: 100%;

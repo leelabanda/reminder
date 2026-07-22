@@ -68,7 +68,7 @@ h2 {
 }
 
 /* Mobile View */
-@media (max-width: 768px) {
+@media (max-width: 560px) {
 
     .container {
         width: 100%;
