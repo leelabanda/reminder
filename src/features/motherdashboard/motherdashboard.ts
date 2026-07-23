@@ -18,7 +18,7 @@ export class Motherdashboard {
 
 
   ngOnInit(){
-
+    console.log("Loaded the data");
     const data = localStorage.getItem('people');
 
     if(data){
