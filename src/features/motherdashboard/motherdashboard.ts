@@ -45,7 +45,7 @@ export class Motherdashboard {
   this.upCommingAnniversaries=this.people.filter(person=>
     {
       const relation = person.Relation?.trim();
-    if (relation !== 'F-Friend' && relation !== 'Relation') {
+    if (relation !== 'M-Friend' && relation !== 'Relation') {
     return false;
   }
 
