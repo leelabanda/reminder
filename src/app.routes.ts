@@ -15,6 +15,7 @@ import {EditM } from "./features/manageusers/editm/edit";
 import { EditF } from "./features/manageuserf/editf/edit";
 import { Profile } from "./features/profile/profile";
 import { NgModule } from "@angular/core";
+import { Calendar } from "./features/calendar/calendar";
 
 export const routes: Routes = [
 
@@ -36,7 +37,7 @@ export const routes: Routes = [
 
       { path: 'father/dashboard', component: Fatherdashboard },
        { path: 'father/add', component: AddF },
-    //  { path: 'father/calendar', component: CalendarF },
+     { path: 'calendar', component: Calendar},
       { path: 'father/users', component: ManageuserF },
       { path: 'mother/dashboard', component: Motherdashboard },
      { path: 'mother/add', component: Add },

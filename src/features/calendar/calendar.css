@@ -1,0 +1,489 @@
+/* ===============================
+   MAIN CONTAINER
+================================ */
+
+.containerf {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    overflow-x: hidden;
+
+}
+
+
+
+/* ===============================
+   HEADER
+================================ */
+
+.month-card {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.month-card h2 {
+
+    margin: 0;
+
+    flex: 1;
+
+    text-align: center;
+
+    font-size: 24px;
+
+}
+
+
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.circle-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: white;
+
+    color: #2563eb;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.circle-btn:hover {
+
+    transform: scale(1.1);
+
+    background: #dbeafe;
+
+}
+
+
+
+
+
+/* ===============================
+   USER FILTER
+================================ */
+
+.filter-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+
+.filter-container label {
+
+    font-weight: bold;
+
+}
+
+
+
+.filter-container select {
+
+    padding: 8px 15px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    outline: none;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+}
+
+
+
+
+
+/* ===============================
+   CALENDAR BOX
+================================ */
+
+.calendar-wrapperf {
+
+    width: 100%;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+
+}
+
+
+
+
+
+/* ===============================
+   WEEK HEADER
+================================ */
+
+.weekdaysf {
+
+    display: grid;
+
+    grid-template-columns: repeat(7,1fr);
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+.weekdaysf div {
+
+    text-align: center;
+
+    padding: 12px;
+
+    background: #e2e8f0;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    color: #334155;
+
+}
+
+
+
+
+
+/* ===============================
+   CALENDAR GRID
+================================ */
+
+.calendarf {
+
+    display: grid;
+
+    grid-template-columns: repeat(7,1fr);
+
+    gap: 8px;
+
+    width: 100%;
+
+}
+
+
+
+
+
+/* ===============================
+   DAY CELL
+================================ */
+
+.dayf {
+
+    min-height: 100px;
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 10px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+
+}
+
+
+
+.dayf:hover {
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    transform: translateY(-2px);
+
+}
+
+
+
+
+
+/* Empty cells */
+
+.empty {
+
+    background: #f8fafc;
+
+    border: none;
+
+}
+
+
+
+
+
+/* Today */
+
+.today {
+
+    border: 3px solid #2563eb;
+
+}
+
+
+
+
+
+/* Date */
+
+.datef {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #1e293b;
+
+}
+
+
+
+
+
+/* ===============================
+   EVENTS
+================================ */
+
+.birthday-textf {
+
+    /* margin-top: 8px;
+
+    padding: 5px;
+
+    border-radius: 6px;
+ */
+   /* background: #fee2e2; */
+
+    color: #b91c1c;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.anniversary-textf {
+
+    /* margin-top: 5px;
+
+    padding: 5px;
+
+    border-radius: 6px; */
+
+    /* background: #bcbcec; */
+
+    color: #15803d;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+
+
+/* Birthday + Anniversary same day */
+
+.both {
+
+    background: #fef3c7;
+
+}
+
+
+
+
+
+.birthday {
+
+    background: #fff7f7;
+
+}
+
+
+
+
+
+.anniversary {
+
+    background: #f0fdf4;
+
+}
+
+
+
+
+
+/* ===============================
+   TABLET
+================================ */
+
+@media(max-width:1000px){
+
+
+    .month-card {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .calendar-wrapperf {
+
+        overflow-x: auto;
+
+    }
+
+
+    .calendarf,
+    .weekdaysf {
+
+        min-width: 750px;
+
+    }
+
+}
+
+
+
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:600px){
+
+
+    .containerf {
+
+        padding: 10px;
+
+    }
+
+
+
+    .month-card {
+
+        flex-direction: column;
+
+    }
+
+
+
+    .month-card h2 {
+
+        font-size: 20px;
+
+    }
+
+
+
+    .filter-container {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+
+
+    .circle-btn {
+
+        width: 35px;
+
+        height: 35px;
+
+    }
+
+
+}
