@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { Fatherdashboard } from "./features/fatherdashboard/fatherdashboard";
 import { Login } from "./features/login/login";
 import { Main } from "./features/main/main";
@@ -14,6 +14,7 @@ import { ManageuserF } from "./features/manageuserf/manageuserf";
 import {EditM } from "./features/manageusers/editm/edit";
 import { EditF } from "./features/manageuserf/editf/edit";
 import { Profile } from "./features/profile/profile";
+import { NgModule } from "@angular/core";
 
 export const routes: Routes = [
 
@@ -50,8 +51,9 @@ export const routes: Routes = [
        { path: 'status', component: Status },
       { path: 'profile', component: Profile }
 
-
+      
     ]
+    
   }
 
 ];
