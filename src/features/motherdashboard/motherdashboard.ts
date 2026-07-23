@@ -92,10 +92,10 @@ export class Motherdashboard {
         `${anniversary.getDate()}-${anniversary.getMonth()}`
       );
 
-    }).sort((a,b)=>{
-      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
-    });
-
+}).sort((a,b)=>{
+  return this.convertDate(a.Anniversary).getTime() -
+         this.convertDate(b.Anniversary).getTime();
+});
 
   }
 
@@ -129,5 +129,22 @@ export class Motherdashboard {
     );
 
   }
+  formatDOB(date: string): string {
+  const d = this.convertDate(date);
+
+  return d.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short'
+  });
+}
+
+formatAnniversary(date: string): string {
+  const d = this.convertDate(date);
+
+  return d.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short'
+  });
+}
 
 }

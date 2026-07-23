@@ -7,7 +7,7 @@
         <div class="event-item" *ngFor="let p of upCommingBirthdays">
 
             <div class="date">
-                {{ p.DOB | date:'dd MMM' }}
+                {{formatDOB(p.DOB) }}
             </div>
 
             <div class="details">
@@ -32,7 +32,7 @@
         <div class="event-item" *ngFor="let p of upCommingAnniversaries">
 
             <div class="date">
-                {{ p.Anniversary | date:'dd MMM' }}
+                {{ formatAnniversary(p.Anniversary)}}
             </div>
 
             <div class="details">
