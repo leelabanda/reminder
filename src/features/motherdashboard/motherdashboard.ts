@@ -48,50 +48,53 @@ export class Motherdashboard {
 
 
     this.upCommingBirthdays = this.people.filter(person=>{
+
       if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
         return false;
       }
+
+
       if(!person.DOB){
         return false;
       }
+
+
       const dob = this.convertDate(person.DOB);
+
+
       return next10Days.includes(
         `${dob.getDate()}-${dob.getMonth()}`
       );
+
     }).sort((a,b)=>{
       return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
-        this.upCommingAnniversaries = this.people.filter(person=>{
+
+
+
+    this.upCommingAnniversaries = this.people.filter(person=>{
+
+
       if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
         return false;
       }
+
+
       if(!person.Anniversary){
         return false;
       }
+
+
       const anniversary = this.convertDate(person.Anniversary);
+
+
       return next10Days.includes(
         `${anniversary.getDate()}-${anniversary.getMonth()}`
       );
+
     }).sort((a,b)=>{
       return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
-
-
-
-    // this.upCommingAnniversaries = this.people.filter(person=>{
-    //   if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-    //     return false;
-    //   }
-    //   if(!person.Anniversary){
-    //     return false;
-    //   }
-    //   const anniversary = this.convertDate(person.Anniversary);
-    //   return next10Days.includes(
-    //     `${anniversary.getDate()}-${anniversary.getMonth()}`
-    //   );
-    //     }).sort((a,b)=>{
-    //   return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
-    // });
 
 
   }
