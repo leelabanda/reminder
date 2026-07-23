@@ -54,13 +54,27 @@ export class Motherdashboard {
       if(!person.DOB){
         return false;
       }
+      console.log(
+  this.people.map(p => ({
+    name: p.Name,
+    anniversary: p.Anniversary
+  }))
+);
       const dob = this.convertDate(person.DOB);
       return next10Days.includes(
         `${dob.getDate()}-${dob.getMonth()}`
       );
     }).sort((a,b)=>{
       return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
+      
     });
+    console.log(
+  this.upCommingAnniversaries.map(p => ({
+    name: p.Name,
+    anniversary: p.Anniversary,
+    days: this.getDaysUntil(p.Anniversary!)
+  }))
+);
     //     this.upCommingAnniversaries = this.people.filter(person=>{
     //   if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
     //     return false;
