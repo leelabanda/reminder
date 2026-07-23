@@ -15,7 +15,7 @@ interface CalendarDay {
   templateUrl: './calendar.html',
   styleUrl: './calendar.css'
 })
-export class CalendarM {
+export class CalendarF {
   selectedUser='Father';
   users=['Father','Mother'];
   people: Person[] = [];
@@ -150,74 +150,103 @@ export class CalendarM {
 
   }
 
+  // hasBirthday(day: number): boolean {
+
+  //   if (day === 0) return false;
+
+  //   return this.filteredPeople.some(person => {
+
+  //     if (!person.DOB) return false;
+  //     if(person.Relation==='M-Friend') return false;
+  //     const parts = person.DOB.trim().split(' ');
+
+  //     return Number(parts[0]) === day &&
+  //            parts[1].toLowerCase() === this.monthName.toLowerCase();
+
+  //   });
+
+  // }
   hasBirthday(day: number): boolean {
 
-    if (day === 0) return false;
+  if (day === 0) return false;
 
-    return this.filteredPeople.some(person => {
+  return this.filteredPeople.some(person => {
 
-      if (!person.DOB) return false;
-      if(person.Relation==='F-Friend') return false;
-      const parts = person.DOB.trim().split(' ');
+    if (!person.DOB) return false;
 
-      return Number(parts[0]) === day &&
-             parts[1].toLowerCase() === this.monthName.toLowerCase();
+    const parts = person.DOB.trim().split(' ');
 
-    });
+    return Number(parts[0]) === day &&
+           parts[1].toLowerCase() === this.monthName.toLowerCase();
 
-  }
+  });
 
-  hasAnniversary(day: number): boolean {
+}
 
-    if (day === 0) return false;
+  // hasAnniversary(day: number): boolean {
 
-    return this.filteredPeople.some(person => {
+  //   if (day === 0) return false;
 
-      if (!person.Anniversary) return false;
-      if(person.Relation==='F-Friend') return false;
-      const parts = person.Anniversary.trim().split(' ');
+  //   return this.filteredPeople.some(person => {
 
-      return Number(parts[0]) === day &&
-             parts[1].toLowerCase() === this.monthName.toLowerCase();
+  //     if (!person.Anniversary) return false;
+  //     if(person.Relation==='M-Friend') return false;
+  //     const parts = person.Anniversary.trim().split(' ');
 
-    });
+  //     return Number(parts[0]) === day &&
+  //            parts[1].toLowerCase() === this.monthName.toLowerCase();
 
-  }
+  //   });
 
-  getBirthdays(day: number): Person[] {
+  // }
+hasAnniversary(day: number): boolean {
 
-    if (day === 0) return [];
+  if (day === 0) return false;
 
-    return this.filteredPeople.filter(person => {
+  return this.filteredPeople.some(person => {
 
-      if (!person.DOB) return false;
-      if (person.Relation === 'F-Friend') return false;
-      const parts = person.DOB.trim().split(' ');
+    if (!person.Anniversary) return false;
 
-      return Number(parts[0]) === day &&
-             parts[1].toLowerCase() === this.monthName.toLowerCase();
+    const parts = person.Anniversary.trim().split(' ');
 
-    });
+    return Number(parts[0]) === day &&
+           parts[1].toLowerCase() === this.monthName.toLowerCase();
 
-  }
+  });
 
-  getAnniversaries(day: number): Person[] {
+}
+ getBirthdays(day: number): Person[] {
 
-    if (day === 0) return [];
+  if (day === 0) return [];
 
-    return this.filteredPeople.filter(person => {
+  return this.filteredPeople.filter(person => {
 
-      if (!person.Anniversary) return false;
-      if (person.Relation === 'F-Friend') return false;
-      const parts = person.Anniversary.trim().split(' ');
+    if (!person.DOB) return false;
 
-      return Number(parts[0]) === day &&
-             parts[1].toLowerCase() === this.monthName.toLowerCase();
+    const parts = person.DOB.trim().split(' ');
 
-    });
+    return Number(parts[0]) === day &&
+           parts[1].toLowerCase() === this.monthName.toLowerCase();
 
-  }
+  });
 
+}
+getAnniversaries(day: number): Person[] {
+
+  if (day === 0) return [];
+
+  return this.filteredPeople.filter(person => {
+
+    if (!person.Anniversary) return false;
+
+    const parts = person.Anniversary.trim().split(' ');
+
+    return Number(parts[0]) === day &&
+           parts[1].toLowerCase() === this.monthName.toLowerCase();
+
+  });
+
+}
   isToday(day: number): boolean {
 
     if (day === 0) return false;

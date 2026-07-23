@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-manageusers',
+  selector: 'app-manageusers-m',
   imports: [CommonModule,FormsModule],
   templateUrl: './manageusers.html',
   styleUrl: './manageusers.css',

@@ -1,142 +1,335 @@
-.containerf{
-    width:100%;
-    padding:20px;
+/* ==========================
+   Reset
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.headerf{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    background:#2d63dd;
-    color:white;
-    padding:15px 20px;
-    border-radius:10px;
-    margin-bottom:15px;
+/* ==========================
+   Main Container
+========================== */
+.containerf {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.headerf h2{
-    margin:0;
-    flex:1;
-    text-align:center;
-    font-size:28px;
+/* ==========================
+   Header
+========================== */
+.headerf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #2d63dd;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.nav-btn{
-    width:40px;
-    height:40px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:18px;
+.headerf h2 {
+    flex: 1;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.filter-container{
-    display:flex;
-    align-items:center;
-    gap:8px;
+/* ==========================
+   Navigation Buttons
+========================== */
+.nav-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #2d63dd;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.filter-container label{
-    font-weight:bold;
+.nav-btn:hover {
+    background: #f2f2f2;
+    transform: scale(1.05);
 }
 
-.filter-container select{
-    padding:8px 10px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    font-size:15px;
+/* ==========================
+   Filter
+========================== */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: bold;
 }
 
-.weekdaysf{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    background:#2d63dd;
-    color:white;
-    border-radius:8px 8px 0 0;
+.filter-container select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
 }
 
-.weekdaysf div{
-    padding:12px;
-    text-align:center;
-    font-weight:bold;
+/* ==========================
+   Calendar Wrapper
+========================== */
+.calendar-wrapperf {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-.calendarf{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
+/* ==========================
+   Week Days
+========================== */
+.weekdaysf {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f3f5f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.dayf{
-    min-height:130px;
-    border:1px solid #ddd;
-    padding:5px;
-    background:white;
+.weekdaysf div {
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+    border-right: 1px solid #ddd;
 }
 
-.empty{
-    background:#f5f5f5;
+.weekdaysf div:last-child {
+    border-right: none;
 }
 
-.datef{
-    font-weight:bold;
-    display:block;
-    margin-bottom:5px;
+/* ==========================
+   Calendar Grid
+========================== */
+.calendarf {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
 }
 
-.today{
-    border:2px solid red;
+/* ==========================
+   Day Cell
+========================== */
+.dayf {
+    min-height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    background: white;
+    position: relative;
+    transition: 0.3s;
+    overflow-y: auto;
 }
 
-.birthday{
-    background:#fff7d6;
+.dayf:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
 }
 
-.anniversary{
-    background:#e7f7ff;
+/* Empty Cells */
+.empty {
+    background: #f7f7f7;
+    border: none;
 }
 
-.both{
-    background:#f8d9ff;
+/* ==========================
+   Date
+========================== */
+.datef {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
+    border-radius: 50%;
+    background: #2d63dd;
+    color: white;
+    margin-bottom: 8px;
 }
 
-.birthday-textf{
-    color:#d35400;
-    font-size:13px;
-    margin-top:3px;
+/* ==========================
+   Today
+========================== */
+.today {
+    border: 2px solid #2196f3;
 }
 
-.anniversary-textf{
-    color:#0b63c7;
-    font-size:13px;
-    margin-top:3px;
+/* Birthday */
+.birthday {
+    background: #fff4d6;
 }
 
-@media(max-width:768px){
+/* Anniversary */
+.anniversary {
+    background: #eaf9ea;
+}
 
-    .headerf{
-        flex-wrap:wrap;
-        justify-content:center;
+/* Both */
+.both {
+    background: linear-gradient(135deg, #fff3c4, #dff8df);
+}
+
+/* ==========================
+   Birthday Text
+========================== */
+.birthday-textf {
+    /* background: #ff9800; */
+    color: red;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+/* ==========================
+   Anniversary Text
+========================== */
+.anniversary-textf {
+    /* background: #4caf50; */
+    color: blue;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+/* Scroll inside day if many names */
+.dayf::-webkit-scrollbar {
+    width: 5px;
+}
+
+.dayf::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* ==========================
+   Tablet
+========================== */
+@media (max-width: 992px) {
+
+    .headerf {
+        justify-content: center;
     }
 
-    .headerf h2{
-        width:100%;
-        order:1;
-        text-align:center;
-        font-size:22px;
+    .headerf h2 {
+        order: -1;
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 24px;
     }
 
-    .filter-container{
-        order:2;
+    .dayf {
+        min-height: 100px;
     }
 
-    .calendarf,
-    .weekdaysf{
-        font-size:12px;
+    .birthday-textf,
+    .anniversary-textf {
+        font-size: 12px;
+    }
+}
+
+/* ==========================
+   Mobile
+========================== */
+@media (max-width: 768px) {
+
+    .containerf {
+        padding: 10px;
     }
 
-    .dayf{
-        min-height:90px;
+    .headerf {
+        flex-direction: column;
+        gap: 12px;
     }
 
+    .headerf h2 {
+        font-size: 22px;
+    }
+
+    .filter-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filter-container select {
+        width: 180px;
+    }
+
+    .weekdaysf div {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .calendarf {
+        gap: 4px;
+    }
+
+    .dayf {
+        min-height: 80px;
+        padding: 4px;
+    }
+
+    .datef {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 12px;
+    }
+
+    .birthday-textf,
+    .anniversary-textf {
+        font-size: 10px;
+        padding: 2px 4px;
+    }
+
+    .nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+
+/* ==========================
+   Small Phones
+========================== */
+@media (max-width: 480px) {
+
+    .headerf h2 {
+        font-size: 18px;
+    }
+
+    .weekdaysf div {
+        font-size: 11px;
+    }
+
+    .dayf {
+        min-height: 70px;
+    }
+
+    .birthday-textf,
+    .anniversary-textf {
+        font-size: 9px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .filter-container select {
+        width: 100%;
+    }
 }

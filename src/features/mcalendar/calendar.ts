@@ -9,13 +9,13 @@ interface CalendarDay {
 }
 
 @Component({
-  selector: 'app-calendar',
+  selector: 'app-calendarm',
   standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './calendar.html',
   styleUrl: './calendar.css'
 })
-export class Calendar {
+export class CalendarM {
 
   people: Person[] = [];
 
@@ -156,7 +156,7 @@ export class Calendar {
     return this.filteredPeople.some(person => {
 
       if (!person.DOB) return false;
-    //  if(person.Relation==='M-Friend') return false;
+      if(person.Relation==='M-Friend') return false;
       const parts = person.DOB.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -173,7 +173,7 @@ export class Calendar {
     return this.filteredPeople.some(person => {
 
       if (!person.Anniversary) return false;
-  //    if(person.Relation==='M-Friend') return false;
+     if(person.Relation==='M-Friend') return false;
       const parts = person.Anniversary.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -190,7 +190,7 @@ export class Calendar {
     return this.filteredPeople.filter(person => {
 
       if (!person.DOB) return false;
-     // if (person.Relation === 'M-Friend') return false;
+      if (person.Relation === 'M-Friend') return false;
       const parts = person.DOB.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -207,7 +207,7 @@ export class Calendar {
     return this.filteredPeople.filter(person => {
 
       if (!person.Anniversary) return false;
-   //   if (person.Relation === 'M-Friend') return false;
+      if (person.Relation === 'M-Friend') return false;
       const parts = person.Anniversary.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -228,11 +228,12 @@ export class Calendar {
     );
 
   }
-    get filteredPeople():Person[]{
-    if(this.selectedUser==='Father'){
-      return this.people.filter(p=>p.Relation!=='M-Friend');
-    }
-    return this.people.filter(p=>p.Relation!=='F-Friend');
+get filteredPeople(): Person[] {
+  if (this.selectedUser === 'Father') {
+    return this.people.filter(p => p.Relation !== 'M-Friend');
   }
+
+  return this.people.filter(p => p.Relation !== 'F-Friend');
+}
 
 }
