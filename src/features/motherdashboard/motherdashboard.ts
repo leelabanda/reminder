@@ -61,24 +61,7 @@ export class Motherdashboard {
     }).sort((a,b)=>{
       return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
-        this.upCommingAnniversaries = this.people.filter(person=>{
-      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-        return false;
-      }
-      if(!person.Anniversary){
-        return false;
-      }
-      const anniversary = this.convertDate(person.Anniversary);
-      return next10Days.includes(
-        `${anniversary.getDate()}-${anniversary.getMonth()}`
-      );
-    }).sort((a,b)=>{
-      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
-    });
-
-
-
-    // this.upCommingAnniversaries = this.people.filter(person=>{
+    //     this.upCommingAnniversaries = this.people.filter(person=>{
     //   if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
     //     return false;
     //   }
@@ -89,9 +72,26 @@ export class Motherdashboard {
     //   return next10Days.includes(
     //     `${anniversary.getDate()}-${anniversary.getMonth()}`
     //   );
-    //     }).sort((a,b)=>{
-    //   return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
+    // }).sort((a,b)=>{
+    //   return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     // });
+
+
+
+    this.upCommingAnniversaries = this.people.filter(person=>{
+      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
+        return false;
+      }
+      if(!person.Anniversary){
+        return false;
+      }
+      const anniversary = this.convertDate(person.Anniversary);
+      return next10Days.includes(
+        `${anniversary.getDate()}-${anniversary.getMonth()}`
+      );
+        }).sort((a,b)=>{
+      return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
+    });
 
 
   }
