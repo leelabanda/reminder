@@ -73,7 +73,7 @@ export class Motherdashboard {
         `${anniversary.getDate()}-${anniversary.getMonth()}`
       );
     }).sort((a,b)=>{
-      return this.convertDate(a.Anniversary).getTime()-this.convertDate(b.).getTime();
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
 
 
