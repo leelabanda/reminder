@@ -78,24 +78,46 @@ export class Motherdashboard {
 
 
 
-    this.upCommingAnniversaries = this.people.filter(person=>{
-      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-        return false;
-      }
-      if(!person.Anniversary){
-        return false;
-      }
-      const anniversary = this.convertDate(person.Anniversary);
-      return next10Days.includes(
-        `${anniversary.getDate()}-${anniversary.getMonth()}`
-      );
-        }).sort((a,b)=>{
-      return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
-    });
+this.upCommingBirthdays = this.people
+  .filter(person => {
+
+    if (person.Relation !== 'M-Friend' &&
+        person.Relation !== 'Relation') {
+      return false;
+    }
+
+    if (!person.DOB) {
+      return false;
+    }
+
+    const days = this.getDaysUntil(person.DOB);
+
+    return days > 0 && days <= 10;
+  })
+  .sort((a, b) =>
+    this.getDaysUntil(a.DOB) -
+    this.getDaysUntil(b.DOB)
+  );
 
 
   }
+getDaysUntil(dateString: string): number {
 
+  const event = this.convertDate(dateString);
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+  event.setHours(0, 0, 0, 0);
+
+  // If this year's event has passed, use next year
+  if (event.getTime() < today.getTime()) {
+    event.setFullYear(today.getFullYear() + 1);
+  }
+
+  return Math.floor(
+    (event.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+  );
+}
 
 
   convertDate(value:string):Date{
