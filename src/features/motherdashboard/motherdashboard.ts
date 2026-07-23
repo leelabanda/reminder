@@ -1,107 +1,99 @@
 import { Component } from '@angular/core';
-import { Person } from '../../model/person';
 import { CommonModule } from '@angular/common';
+import { Person } from '../../model/person';
 
 @Component({
   selector: 'app-motherdashboard',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './motherdashboard.html',
-  styleUrl: './motherdashboard.css',
+  styleUrl: './motherdashboard.css'
 })
 export class Motherdashboard {
 
-  people:Person[] = [];
+  people: Person[] = [];
 
-  upCommingBirthdays:Person[] = [];
+  upCommingBirthdays: Person[] = [];
 
-  upCommingAnniversaries:Person[] = [];
+  upCommingAnniversaries: Person[] = [];
 
-
-  ngOnInit(){
+  ngOnInit(): void {
 
     const data = localStorage.getItem('people');
 
-    if(data){
+    if (data) {
       this.people = JSON.parse(data);
     }
 
     this.loadUpcommingEvents();
   }
 
-
-  loadUpcommingEvents(){
+  loadUpcommingEvents(): void {
 
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    const next10Days:string[] = [];
+    const maxDays = 10;
 
+    // Upcoming Birthdays
+    this.upCommingBirthdays = this.people
+      .filter(person => {
 
-    for(let i=1; i<=10; i++){
+        const relation = person.Relation?.trim();
 
-      const d = new Date(today);
+        if (relation !== 'M-Friend' && relation !== 'Relation') {
+          return false;
+        }
 
-      d.setDate(today.getDate()+i);
+        if (!person.DOB) {
+          return false;
+        }
 
-      next10Days.push(`${d.getDate()}-${d.getMonth()}`);
-    }
+        const eventDate = this.getUpcomingDate(person.DOB);
 
+        const diffDays =
+          (eventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
 
+        return diffDays >= 1 && diffDays <= maxDays;
 
-    this.upCommingBirthdays = this.people.filter(person=>{
-
-      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-        return false;
-      }
-
-
-      if(!person.DOB){
-        return false;
-      }
-
-
-      const dob = this.convertDate(person.DOB);
-
-
-      return next10Days.includes(
-        `${dob.getDate()}-${dob.getMonth()}`
+      })
+      .sort((a, b) =>
+        this.getUpcomingDate(a.DOB).getTime() -
+        this.getUpcomingDate(b.DOB).getTime()
       );
 
-    }).sort((a,b)=>{
-      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
-    });
 
 
+    // Upcoming Anniversaries
+    this.upCommingAnniversaries = this.people
+      .filter(person => {
 
-    this.upCommingAnniversaries = this.people.filter(person=>{
+        const relation = person.Relation?.trim();
 
+        if (relation !== 'M-Friend' && relation !== 'Relation') {
+          return false;
+        }
 
-      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-        return false;
-      }
+        if (!person.Anniversary) {
+          return false;
+        }
 
+        const eventDate = this.getUpcomingDate(person.Anniversary);
 
-      if(!person.Anniversary){
-        return false;
-      }
+        const diffDays =
+          (eventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
 
+        return diffDays >= 1 && diffDays <= maxDays;
 
-      const anniversary = this.convertDate(person.Anniversary);
-
-
-      return next10Days.includes(
-        `${anniversary.getDate()}-${anniversary.getMonth()}`
+      })
+      .sort((a, b) =>
+        this.getUpcomingDate(a.Anniversary!).getTime() -
+        this.getUpcomingDate(b.Anniversary!).getTime()
       );
-
-    }).sort((a,b)=>{
-      return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
-    });
-
 
   }
 
-
-
-  convertDate(value:string):Date{
+  getUpcomingDate(value: string): Date {
 
     const months = [
       'January',
@@ -118,16 +110,23 @@ export class Motherdashboard {
       'December'
     ];
 
+    const [day, month] = value.trim().split(' ');
 
-    const [day, month] = value.split(' ');
+    const today = new Date();
 
-
-    return new Date(
-      new Date().getFullYear(),
+    const eventDate = new Date(
+      today.getFullYear(),
       months.indexOf(month),
       Number(day)
     );
 
+    eventDate.setHours(0, 0, 0, 0);
+
+    if (eventDate < today) {
+      eventDate.setFullYear(today.getFullYear() + 1);
+    }
+
+    return eventDate;
   }
 
 }
