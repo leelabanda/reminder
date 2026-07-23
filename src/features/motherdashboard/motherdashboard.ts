@@ -88,36 +88,25 @@ export class Motherdashboard {
 
   }
 
-  getUpcomingDate(value: string): Date {
-
+getUpcomingDate(value: string): Date {
     const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
     const [day, month] = value.trim().split(' ');
-
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    const eventDate = new Date(
+    let eventDate = new Date(
       today.getFullYear(),
       months.indexOf(month),
       Number(day)
     );
-
     eventDate.setHours(0, 0, 0, 0);
 
-    if (eventDate < today) {
+    // If the date has already passed this year, look at next year
+    if (eventDate.getTime() < today.getTime()) {
       eventDate.setFullYear(today.getFullYear() + 1);
     }
 
