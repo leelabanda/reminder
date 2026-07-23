@@ -1,116 +1,130 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Person } from '../../model/person';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-motherdashboard',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './motherdashboard.html',
-  styleUrl: './motherdashboard.css'
+  styleUrl: './motherdashboard.css',
 })
 export class Motherdashboard {
 
-  people: Person[] = [];
+  people:Person[] = [];
 
-  upCommingBirthdays: Person[] = [];
+  upCommingBirthdays:Person[] = [];
 
-  upCommingAnniversaries: Person[] = [];
+  upCommingAnniversaries:Person[] = [];
 
-  ngOnInit(): void {
+
+  ngOnInit(){
 
     const data = localStorage.getItem('people');
 
-    if (data) {
+    if(data){
       this.people = JSON.parse(data);
     }
 
     this.loadUpcommingEvents();
   }
 
-  loadUpcommingEvents(): void {
+
+  loadUpcommingEvents(){
 
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
 
-    const maxDays = 10;
+    const next10Days:string[] = [];
 
-    // Upcoming Birthdays
-    this.upCommingBirthdays = this.people
-      .filter(person => {
 
-        const relation = person.Relation?.trim();
+    for(let i=1; i<=10; i++){
 
-        if (relation !== 'M-Friend' && relation !== 'Relation') {
-          return false;
-        }
+      const d = new Date(today);
 
-        if (!person.DOB) {
-          return false;
-        }
+      d.setDate(today.getDate()+i);
 
-        const eventDate = this.getUpcomingDate(person.DOB);
+      next10Days.push(`${d.getDate()}-${d.getMonth()}`);
+    }
 
-        const diffDays =
-          (eventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
 
-        return diffDays >= 1 && diffDays <= maxDays;
 
-      })
-      .sort((a, b) =>
-        this.getUpcomingDate(a.DOB).getTime() -
-        this.getUpcomingDate(b.DOB).getTime()
+    this.upCommingBirthdays = this.people.filter(person=>{
+      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
+        return false;
+      }
+      if(!person.DOB){
+        return false;
+      }
+      const dob = this.convertDate(person.DOB);
+      return next10Days.includes(
+        `${dob.getDate()}-${dob.getMonth()}`
       );
+    }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
+    });
+        this.upCommingAnniversaries = this.people.filter(person=>{
+      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
+        return false;
+      }
+      if(!person.Anniversary){
+        return false;
+      }
+      const anniversary = this.convertDate(person.Anniversary);
+      return next10Days.includes(
+        `${anniversary.getDate()}-${anniversary.getMonth()}`
+      );
+    }).sort((a,b)=>{
+      return this.convertDate(a.Anniversary).getTime()-this.convertDate(b.Anniversary).getTime();
+    });
 
 
 
-    // Upcoming Anniversaries
-// Upcoming Anniversaries
-    this.upCommingAnniversaries = this.people
-      .filter(person => {
-        const relation = person.Relation?.trim();
-        if (relation !== 'M-Friend' && relation !== 'Relation') {
-          return false;
-        }
-        if (!person.Anniversary) {
-          return false;
-        }
-        const eventDate = this.getUpcomingDate(person.Anniversary);
-        const diffDays =
-          (eventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
-        return diffDays >= 1 && diffDays <= maxDays;
-      })
-      .sort((a, b) => {
-        const dateA = this.getUpcomingDate(a.Anniversary!).getTime();
-        const dateB = this.getUpcomingDate(b.Anniversary!).getTime();
-        return dateA - dateB; // Ensures proper chronological ordering (e.g., July before August)
-      });
+    // this.upCommingAnniversaries = this.people.filter(person=>{
+    //   if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
+    //     return false;
+    //   }
+    //   if(!person.Anniversary){
+    //     return false;
+    //   }
+    //   const anniversary = this.convertDate(person.Anniversary);
+    //   return next10Days.includes(
+    //     `${anniversary.getDate()}-${anniversary.getMonth()}`
+    //   );
+    //     }).sort((a,b)=>{
+    //   return this.convertDate(a.Anniversary!).getTime()-this.convertDate(b.Anniversary!).getTime();
+    // });
+
 
   }
 
-getUpcomingDate(value: string): Date {
+
+
+  convertDate(value:string):Date{
+
     const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
     ];
 
-    const [day, month] = value.trim().split(' ');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
 
-    let eventDate = new Date(
-      today.getFullYear(),
+    const [day, month] = value.split(' ');
+
+
+    return new Date(
+      new Date().getFullYear(),
       months.indexOf(month),
       Number(day)
     );
-    eventDate.setHours(0, 0, 0, 0);
 
-    // If the date has already passed this year, look at next year
-    if (eventDate.getTime() < today.getTime()) {
-      eventDate.setFullYear(today.getFullYear() + 1);
-    }
-
-    return eventDate;
   }
 
 }
