@@ -32,7 +32,7 @@ export class Motherdashboard {
     }
     this.upCommingBirthdays=this.people.filter(person=>{
       const relation = person.Relation?.trim();
-    if (relation !== 'F-Friend' && relation !== 'Relation') {
+    if (relation !== 'M-Friend' && relation !== 'Relation') {
     return false;
   }
       if(!person.DOB)return false;
