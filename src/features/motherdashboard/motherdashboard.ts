@@ -65,31 +65,26 @@ export class Motherdashboard {
 
 
     // Upcoming Anniversaries
+// Upcoming Anniversaries
     this.upCommingAnniversaries = this.people
       .filter(person => {
-
         const relation = person.Relation?.trim();
-
         if (relation !== 'M-Friend' && relation !== 'Relation') {
           return false;
         }
-
         if (!person.Anniversary) {
           return false;
         }
-
         const eventDate = this.getUpcomingDate(person.Anniversary);
-
         const diffDays =
           (eventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
-
         return diffDays >= 1 && diffDays <= maxDays;
-
       })
-      .sort((a, b) =>
-        this.getUpcomingDate(a.Anniversary!).getTime() -
-        this.getUpcomingDate(b.Anniversary!).getTime()
-      );
+      .sort((a, b) => {
+        const dateA = this.getUpcomingDate(a.Anniversary!).getTime();
+        const dateB = this.getUpcomingDate(b.Anniversary!).getTime();
+        return dateA - dateB; // Ensures proper chronological ordering (e.g., July before August)
+      });
 
   }
 
