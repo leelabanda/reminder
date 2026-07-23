@@ -66,13 +66,6 @@
         </a>
 
         <a
-          routerLink="/father/calendar"
-          routerLinkActive="active"
-          (click)="closeSidebarOnMobile()">
-          📆 Calendar
-        </a>
-
-        <a
           routerLink="/father/users"
           routerLinkActive="active"
           (click)="closeSidebarOnMobile()">
@@ -107,12 +100,12 @@
           👥 Add Person
         </a>
 
-        <a
+        <!-- <a
           routerLink="/mother/calendar"
           routerLinkActive="active"
           (click)="closeSidebarOnMobile()">
           📆 Calendar
-        </a>
+        </a> -->
 
         <a
           routerLink="/mother/users"
@@ -124,7 +117,12 @@
       </div>
 
     </div>
-
+            <a
+          routerLink="/father/calendar"
+          routerLinkActive="active"
+          (click)="closeSidebarOnMobile()">
+          📆 Calendar
+        </a>
     <a
       routerLink="/status"
       routerLinkActive="active"

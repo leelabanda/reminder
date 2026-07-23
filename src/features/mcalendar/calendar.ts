@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Person } from '../../model/person';
+import { FormsModule } from '@angular/forms';
 
 interface CalendarDay {
   day: number;
@@ -10,7 +11,7 @@ interface CalendarDay {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './calendar.html',
   styleUrl: './calendar.css'
 })
@@ -23,7 +24,8 @@ export class Calendar {
   currentMonth = this.today.getMonth();
 
   currentYear = this.today.getFullYear();
-
+    selectedUser='Mother';
+  users=['Father','Mother'];
   months = [
     'January',
     'February',
@@ -50,7 +52,13 @@ export class Calendar {
     if (data) {
       this.people = JSON.parse(data);
     }
-
+        const username=localStorage.getItem('username');
+    if(username==='Rajendra'){
+      this.selectedUser='Father';
+    }
+    else if(username==='Surekha'){
+      this.selectedUser='Mother';
+    }
     this.generateCalendar();
 
   }
@@ -145,10 +153,10 @@ export class Calendar {
 
     if (day === 0) return false;
 
-    return this.people.some(person => {
+    return this.filteredPeople.some(person => {
 
       if (!person.DOB) return false;
-      if(person.Relation==='M-Friend') return false;
+    //  if(person.Relation==='M-Friend') return false;
       const parts = person.DOB.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -162,10 +170,10 @@ export class Calendar {
 
     if (day === 0) return false;
 
-    return this.people.some(person => {
+    return this.filteredPeople.some(person => {
 
       if (!person.Anniversary) return false;
-      if(person.Relation==='M-Friend') return false;
+  //    if(person.Relation==='M-Friend') return false;
       const parts = person.Anniversary.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -179,10 +187,10 @@ export class Calendar {
 
     if (day === 0) return [];
 
-    return this.people.filter(person => {
+    return this.filteredPeople.filter(person => {
 
       if (!person.DOB) return false;
-      if (person.Relation === 'M-Friend') return false;
+     // if (person.Relation === 'M-Friend') return false;
       const parts = person.DOB.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -196,10 +204,10 @@ export class Calendar {
 
     if (day === 0) return [];
 
-    return this.people.filter(person => {
+    return this.filteredPeople.filter(person => {
 
       if (!person.Anniversary) return false;
-      if (person.Relation === 'M-Friend') return false;
+   //   if (person.Relation === 'M-Friend') return false;
       const parts = person.Anniversary.trim().split(' ');
 
       return Number(parts[0]) === day &&
@@ -219,6 +227,12 @@ export class Calendar {
       this.currentYear === this.today.getFullYear()
     );
 
+  }
+    get filteredPeople():Person[]{
+    if(this.selectedUser==='Father'){
+      return this.people.filter(p=>p.Relation!=='M-Friend');
+    }
+    return this.people.filter(p=>p.Relation!=='F-Friend');
   }
 
 }

@@ -66,6 +66,8 @@ export class Motherdashboard {
         `${dob.getDate()}-${dob.getMonth()}`
       );
 
+    }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
 
 
@@ -90,7 +92,10 @@ export class Motherdashboard {
         `${anniversary.getDate()}-${anniversary.getMonth()}`
       );
 
+    }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
+
 
   }
 

@@ -1,161 +1,142 @@
-/* Container */
-.containerf {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+.containerf{
+    width:100%;
+    padding:20px;
 }
 
-/* Header */
-.headerf {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.headerf{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    background:#2d63dd;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    margin-bottom:15px;
 }
 
-.headerf h2 {
-    font-size: 24px;
+.headerf h2{
+    margin:0;
+    flex:1;
+    text-align:center;
+    font-size:28px;
 }
 
-.headerf button {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    background: #1976d2;
-    color: white;
-    cursor: pointer;
+.nav-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:18px;
 }
 
-/* Scroll Wrapper with enforced horizontal scroll context */
-.calendar-wrapperf {
-    width: 100%;
-    overflow-x: auto !important;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+.filter-container{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-/* Weekdays */
-.weekdaysf {
-    display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-    min-width: 840px;
+.filter-container label{
+    font-weight:bold;
 }
 
-/* Calendar */
-.calendarf {
-    display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important;
-    gap: 10px;
-    min-width: 840px;
+.filter-container select{
+    padding:8px 10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-size:15px;
 }
 
-/* Day */
-.dayf {
-    min-height: 120px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: white;
-    white-space: normal; /* Restores text wrapping inside grid cells */
+.weekdaysf{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    background:#2d63dd;
+    color:white;
+    border-radius:8px 8px 0 0;
 }
 
-.emptyf {
-    background: #f5f5f5;
-    border: none;
+.weekdaysf div{
+    padding:12px;
+    text-align:center;
+    font-weight:bold;
 }
 
-.datef {
-    font-size: 18px;
-    font-weight: bold;
+.calendarf{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
 }
 
-.todayf {
-    border: 3px solid #16a34a;
+.dayf{
+    min-height:130px;
+    border:1px solid #ddd;
+    padding:5px;
+    background:white;
 }
 
-.birthdayf {
-    background: #dbeafe;
+.empty{
+    background:#f5f5f5;
 }
 
-.anniversaryf {
-    background: #ffe4ec;
+.datef{
+    font-weight:bold;
+    display:block;
+    margin-bottom:5px;
 }
 
-.bothf {
-    background: #e9d5ff;
+.today{
+    border:2px solid red;
 }
 
-.birthday-textf,
-.anniversary-textf {
-    font-size: 12px;
-    margin-top: 5px;
+.birthday{
+    background:#fff7d6;
 }
-/* Tablet */
-@media (max-width: 768px) {
-    .containerf {
-        padding: 15px;
+
+.anniversary{
+    background:#e7f7ff;
+}
+
+.both{
+    background:#f8d9ff;
+}
+
+.birthday-textf{
+    color:#d35400;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.anniversary-textf{
+    color:#0b63c7;
+    font-size:13px;
+    margin-top:3px;
+}
+
+@media(max-width:768px){
+
+    .headerf{
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
-    .headerf {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
+    .headerf h2{
+        width:100%;
+        order:1;
+        text-align:center;
+        font-size:22px;
     }
 
-    .headerf h2 {
-        text-align: center;
-        font-size: 20px;
+    .filter-container{
+        order:2;
     }
 
-    .headerf button {
-        width: 100%;
+    .calendarf,
+    .weekdaysf{
+        font-size:12px;
     }
 
-    .dayf {
-        min-height: 100px;
+    .dayf{
+        min-height:90px;
     }
 
-    .datef {
-        font-size: 16px;
-    }
-
-    .birthday-textf,
-    .anniversary-textf {
-        font-size: 11px;
-    }
-}
-
-/* Small Phones */
-@media screen and (max-width: 480px) {
-    .containerf {
-        padding: 10px;
-    }
-
-    .dayf {
-        min-height: 100px;
-    }
-
-    .headerf h2 {
-        font-size: 18px;
-    }
-
-    .headerf button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .datef {
-        font-size: 16px;
-    }
-
-    .birthday-textf,
-    .anniversary-textf {
-        font-size: 11px;
-    }
 }

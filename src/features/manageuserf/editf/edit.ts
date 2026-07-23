@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Person } from '../../../model/person';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { JsonpInterceptor } from '@angular/common/http';
 
 @Component({
@@ -16,7 +16,7 @@ export class EditF {
   person!:Person;
   newName = '';
   people:Person[]=[];
-  constructor(private router:ActivatedRoute){}
+  constructor(private router:ActivatedRoute,private route:Router){}
   ngOnInit(){
     this.people=JSON.parse(localStorage.getItem('people')||'[]');
     const id=Number(this.router.snapshot.paramMap.get('id'));
@@ -46,6 +46,7 @@ return `${year}-${month}-${day}`;
     this.people[id]=this.person;
     localStorage.setItem('people',JSON.stringify(this.people));
     alert("User Updated Successfully");
+    this.route.navigate(['/father/users']);
   }
     formatDate(date: string): string {
       if(!date)return '';

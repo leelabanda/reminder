@@ -1,21 +1,66 @@
 <h2>Edit User</h2>
-<div class="form">
-    <label>Name</label>
-    <input type="text" [(ngModel)]="person.Name">
-    <label>DOB</label>
-    <input type="date" [(ngModel)]="person.DOB">
-    <label>Anniversary</label>
-    <input type="date" [(ngModel)]="person.Anniversary">
-    <label>Relation</label>
-            <select [(ngModel)]="person.Relation" name="relation" required>
-                <option value="">Select</option>
-                <option value="M-Friend">M-Friend</option>
-                <option value="Relation">Relation</option>
-            </select>
-    <label>Sub-Relation</label>
-    <input type="text" [(ngModel)]="person.SubRelation">
-    <label>City</label>
-    <input type="text" [(ngModel)]="person.City">
-    <label>Country</label>
-    <input type="text" [(ngModel)]="person.Location">
-</div>
+
+<form (ngSubmit)="updateUser()">
+
+  <div class="form">
+
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="person.Name">
+
+    <label for="dob">DOB</label>
+    <input
+      type="date"
+      id="dob"
+      name="dob"
+      [(ngModel)]="person.DOB">
+
+    <label for="anniversary">Anniversary</label>
+    <input
+      type="date"
+      id="anniversary"
+      name="anniversary"
+      [(ngModel)]="person.Anniversary">
+
+    <label for="relation">Relation</label>
+    <select
+      id="relation"
+      name="relation"
+      [(ngModel)]="person.Relation"
+      required>
+      <option value="">Select</option>
+      <option value="M-Friend">M-Friend</option>
+      <option value="F-Friend">F-Friend</option>
+      <option value="Family">Family</option>
+      <option value="Relative">Relative</option>
+    </select>
+
+    <label for="subRelation">Sub-Relation</label>
+    <input
+      type="text"
+      id="subRelation"
+      name="subRelation"
+      [(ngModel)]="person.SubRelation">
+
+    <label for="city">City</label>
+    <input
+      type="text"
+      id="city"
+      name="city"
+      [(ngModel)]="person.City">
+
+    <label for="location">Country</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      [(ngModel)]="person.Location">
+
+    <button type="submit">Save</button>
+
+  </div>
+
+</form>

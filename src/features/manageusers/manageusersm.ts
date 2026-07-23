@@ -50,7 +50,7 @@ searchUser() {
 
   this.motherPeople = this.people.filter(person =>
     (person.Relation === 'Relation' || person.Relation === 'M-Friend') &&
-    person.Name.toLowerCase().includes(text)
+    person.Name?.toLowerCase().includes(text)
   );
 }
 }

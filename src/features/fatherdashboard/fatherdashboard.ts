@@ -37,7 +37,10 @@ export class Fatherdashboard {
       if(!person.DOB)return false;
       const dob=this.convertDate(person.DOB);
       return next10Days.includes(`${dob.getDate()}-${dob.getMonth()}`);
-  });
+  }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
+    });
+
   this.upCommingAnniversaries=this.people.filter(person=>
     {
       const relation = person.Relation?.trim();
@@ -48,7 +51,10 @@ export class Fatherdashboard {
       if(!person.Anniversary)return false;
       const anniversaries=this.convertDate(person.Anniversary);
       return next10Days.includes(`${anniversaries.getDate()}-${anniversaries.getMonth()}`);
+    }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
     });
+
   }
    convertDate(value:string):Date{
 

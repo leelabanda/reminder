@@ -23,6 +23,9 @@ export class ManageuserF {
 
   loadUsers() {
     this.people = JSON.parse(localStorage.getItem('people') || '[]');
+      this.people.forEach(p => {
+    console.log(p.Name, p.Relation);
+  });
      this.motherPeople = this.people.filter(
       p => p.Relation === 'Relation' || p.Relation === 'F-Friend'
     );
@@ -40,7 +43,7 @@ export class ManageuserF {
     localStorage.setItem('people', JSON.stringify(this.people));
     this.loadUsers();
   }
-  alert("Do You want to");
+  alert("Do You want to Delete The Person");
 }
      editUser(person:Person) {
     const index=this.people.findIndex(p=>p.Name===person.Name && p.DOB===person.DOB && p.Relation===person.Relation);
@@ -49,10 +52,10 @@ export class ManageuserF {
 searchUser() {
 
   const text = this.searchText.toLowerCase().trim();
-
+console.log("Search called:", this.searchText);
   this.motherPeople = this.people.filter(person =>
     (person.Relation === 'Relation' || person.Relation === 'F-Friend') &&
-    person.Name.toLowerCase().includes(text)
+    person.Name?.toLowerCase().includes(text)
   );
 }
 }

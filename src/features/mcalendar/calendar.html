@@ -4,7 +4,15 @@
     <button (click)="previousMonth()">◀</button>
 
     <h2>{{ monthName }} {{ currentYear }}</h2>
+            <div class="filter-container">
+            <label>User:</label>
 
+            <select [(ngModel)]="selectedUser">
+                <option *ngFor="let user of users" [value]="user">
+                    {{ user }}
+                </option>
+            </select>
+        </div>
     <button (click)="nextMonth()">▶</button>
   </div>
 
