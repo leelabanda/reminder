@@ -75,43 +75,43 @@ export class Motherdashboard {
     days: this.getDaysUntil(p.Anniversary!)
   }))
 );
-    //     this.upCommingAnniversaries = this.people.filter(person=>{
-    //   if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
-    //     return false;
-    //   }
-    //   if(!person.Anniversary){
-    //     return false;
-    //   }
-    //   const anniversary = this.convertDate(person.Anniversary);
-    //   return next10Days.includes(
-    //     `${anniversary.getDate()}-${anniversary.getMonth()}`
-    //   );
-    // }).sort((a,b)=>{
-    //   return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
-    // });
+        this.upCommingAnniversaries = this.people.filter(person=>{
+      if(person.Relation !== 'M-Friend' && person.Relation !== 'Relation'){
+        return false;
+      }
+      if(!person.Anniversary){
+        return false;
+      }
+      const anniversary = this.convertDate(person.Anniversary);
+      return next10Days.includes(
+        `${anniversary.getDate()}-${anniversary.getMonth()}`
+      );
+    }).sort((a,b)=>{
+      return this.convertDate(a.DOB).getTime()-this.convertDate(b.DOB).getTime();
+    });
 
 
 
-this.upCommingBirthdays = this.people
-  .filter(person => {
+// this.upCommingBirthdays = this.people
+//   .filter(person => {
 
-    if (person.Relation !== 'M-Friend' &&
-        person.Relation !== 'Relation') {
-      return false;
-    }
+//     if (person.Relation !== 'M-Friend' &&
+//         person.Relation !== 'Relation') {
+//       return false;
+//     }
 
-    if (!person.DOB) {
-      return false;
-    }
+//     if (!person.DOB) {
+//       return false;
+//     }
 
-    const days = this.getDaysUntil(person.DOB);
+//     const days = this.getDaysUntil(person.DOB);
 
-    return days > 0 && days <= 10;
-  })
-  .sort((a, b) =>
-    this.getDaysUntil(a.DOB) -
-    this.getDaysUntil(b.DOB)
-  );
+//     return days > 0 && days <= 10;
+//   })
+//   .sort((a, b) =>
+//     this.getDaysUntil(a.DOB) -
+//     this.getDaysUntil(b.DOB)
+//   );
 
 
   }
