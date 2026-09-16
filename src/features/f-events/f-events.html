@@ -14,7 +14,7 @@
 
         <div class="event" *ngFor="let p of birthdayToday">
             <strong>{{ p.Name }}</strong><br>
-            {{ p.Relation }} | {{ p.SubRelation }} |{{p.MobileNumber}}
+            {{ p.Relation }} | {{ p.SubRelation }}
                 <button
         *ngIf="p.MobileNumber"
         (click)="sendBirthdayWhatsApp(p)">
@@ -33,7 +33,12 @@
 
         <div class="event" *ngFor="let p of anniversaryToday">
             <strong>{{ p.Name }}</strong><br>
-            {{ p.Relation }} | {{ p.SubRelation }} | {{p.MobileNumber}}
+            {{ p.Relation }} | {{ p.SubRelation }}
+             <button
+        *ngIf="p.MobileNumber"
+        (click)="sendAnniversaryWhatsApp(p)">
+        💬 Send Birthday Wish
+    </button>
         </div>
     </div>
 
