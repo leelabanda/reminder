@@ -12,7 +12,7 @@
 
             <div class="details">
                 <strong>{{ p.Name }}</strong>
-                --{{ p.SubRelation }}
+                --{{ p.SubRelation === 'Nbkrzphigh' ? '10th Class' : p.SubRelation }}
             </div>
 
         </div>
@@ -36,7 +36,8 @@
             </div>
 
             <div class="details">
-                <strong>{{ p.Name }}</strong>-- {{ p.SubRelation }}
+                <strong>{{ p.Name }}</strong>
+                --{{ p.SubRelation === 'Nbkrzphigh' ? '10th class' : p.SubRelation }}
             </div>
 
         </div>

@@ -64,6 +64,46 @@ export class FEvents {  birthdayToday:Person[]=[];
     );
 
   }
+sendBirthdayWhatsApp(person: Person) {
 
+  if (!person.MobileNumber) {
+    alert('Phone number not available');
+    return;
+  }
+
+  // Remove +, spaces, hyphens, etc.
+  const phone = person.MobileNumber.replace(/\D/g, '');
+
+  const message =
+    `🎂 Happy Birthday ${person.Name}! 🎉\n\n` +
+    `Wishing you a wonderful birthday filled with happiness, ` +
+    `good health and success. Have a fantastic year ahead! 🎁🎈`;
+
+  const url =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, '_blank');
+}
+
+
+sendAnniversaryWhatsApp(person: Person) {
+
+  if (!person.MobileNumber) {
+    alert('Phone number not available');
+    return;
+  }
+
+  const phone = person.MobileNumber.replace(/\D/g, '');
+
+  const message =
+    `💐 Happy Anniversary ${person.Name}! ❤️\n\n` +
+    `Wishing you many more wonderful years of love, ` +
+    `happiness and togetherness. 💕`;
+
+  const url =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, '_blank');
+}
 }
 
