@@ -64,46 +64,54 @@ export class FEvents {  birthdayToday:Person[]=[];
     );
 
   }
-sendBirthdayWhatsApp(person: Person) {
+  formatPhoneNumber(mobile: string): string {
+
+  let phone = mobile.replace(/\D/g, '');
+
+  // Indian 10-digit number
+  if (phone.length === 10) {
+    phone = '91' + phone;
+  }
+
+  return phone;
+}
+sendBirthdayWhatsApp(person: any) {
 
   if (!person.MobileNumber) {
-    alert('Phone number not available');
+    alert('Mobile number is not available for ' + person.Name);
     return;
   }
 
-  // Remove +, spaces, hyphens, etc.
-  const phone = person.MobileNumber.replace(/\D/g, '');
-
   const message =
-    `🎂 Happy Birthday ${person.Name}! 🎉\n\n` +
-    `Wishing you a wonderful birthday filled with happiness, ` +
-    `good health and success. Have a fantastic year ahead! 🎁🎈`;
+    `🎂 Happy Birthday ${person.Name}! 🎉\n` +
+    `Wishing you happiness, good health and success. 🎈🎁`;
 
-  const url =
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const phone = this.formatPhoneNumber(person.MobileNumber);
 
-  window.open(url, '_blank');
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    '_blank'
+  );
 }
 
 
-sendAnniversaryWhatsApp(person: Person) {
+sendAnniversaryWhatsApp(person: any) {
 
   if (!person.MobileNumber) {
-    alert('Phone number not available');
+    alert('Mobile number is not available for ' + person.Name);
     return;
   }
 
-  const phone = person.MobileNumber.replace(/\D/g, '');
-
   const message =
-    `💐 Happy Anniversary ${person.Name}! ❤️\n\n` +
-    `Wishing you many more wonderful years of love, ` +
-    `happiness and togetherness. 💕`;
+    `💍 Happy Anniversary ${person.Name}! ❤️\n` +
+    `Wishing you many more wonderful years together. 🎉`;
 
-  const url =
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const phone = this.formatPhoneNumber(person.MobileNumber);
 
-  window.open(url, '_blank');
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    '_blank'
+  );
 }
 }
 
